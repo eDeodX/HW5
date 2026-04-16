@@ -1,0 +1,4 @@
+/root/eDeodX/workspace/tasks/HW5/banking/_build/CMakeFiles/account.dir
+/root/eDeodX/workspace/tasks/HW5/banking/_build/CMakeFiles/transaction.dir
+/root/eDeodX/workspace/tasks/HW5/banking/_build/CMakeFiles/edit_cache.dir
+/root/eDeodX/workspace/tasks/HW5/banking/_build/CMakeFiles/rebuild_cache.dir

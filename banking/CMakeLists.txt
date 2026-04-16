@@ -4,3 +4,6 @@ project(transaction)
 
 add_library(account STATIC ${CMAKE_CURRENT_SOURCE_DIR}/Account.cpp)
 add_library(transaction STATIC ${CMAKE_CURRENT_SOURCE_DIR}/Transaction.cpp)
+
+target_link_libraries(transaction PUBLIC account)
+target_include_directories(${CMAKE_CURRENT_SOURCE_DIR})

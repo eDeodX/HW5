@@ -63,12 +63,15 @@ jobs:
 
       - name: generate coverage
         run: |
-          lcov --capture --directory _build --output-file coverage.info
+          lcov --capture --directory _build --output-file coverage.info \
+            --ignore-errors mismatch,gcov
           lcov --remove coverage.info \
             `/usr/include/*` \
             `${{github.workspace}}/_build/_deps/*` \
             `${{github.workspace}}/tests/*` \
-            --output-file coverage.info
+            --output-file coverage.info \
+            --ignore-errors unused
+          lcov --list coverage.info
       - name: upload
         uses: coverallsapp/github-action@v2
         with:

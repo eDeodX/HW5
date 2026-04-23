@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(banking)
 
+if(MSVC)
+	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+endif()
+
 add_library(account STATIC ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp)
 add_library(transaction STATIC ${CMAKE_CURRENT_SOURCE_DIR}/banking/Transaction.cpp)
 

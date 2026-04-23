@@ -1,12 +1,12 @@
 name: CI/CD on github
-on: [push, pull_request]
+on:  [push, pull_request]
 jobs:
   build-linux:
     name: build with ${{ matrix.compiler }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler: [g++, clnag++]
+        compiler: [g++, clang++]
         include:
           - compiler: g++
             install: g++
@@ -24,12 +24,13 @@ jobs:
       - name: build project
         run: cmake --build _build
   build-windows:
-    name: build with VS
+    name: build with VS 
     runs-on: windows-latest
+
     steps:
-      - name: check code
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: configure with CMake
+      - name: configure with CMakeS
         shell: cmd
         run: |
           mkdir _build

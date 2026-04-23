@@ -69,6 +69,8 @@ jobs:
             `/usr/include/*` \
             `${{github.workspace}}/_build/_deps/*` \
             `${{github.workspace}}/tests/*` \
+            `*/gtest/*` \
+            `*/gmock/*` \
             --output-file coverage.info \
             --ignore-errors unused
           lcov --list coverage.info

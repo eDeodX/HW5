@@ -1,0 +1,1 @@
+[![Coverage Status](https://coveralls.io/repos/github/eDeodX/HW5.git/badge.svg)](https://coveralls.io/github/eDeodX/HW5.git)

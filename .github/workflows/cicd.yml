@@ -42,3 +42,35 @@ jobs:
         run: |
           cd _build
           ctest -C Release --output-on-failure
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+      -uses: actions/checkout@v4
+
+      - name: Install lcov
+        run: sudo apt-get install -y lcov
+
+      - name: configure
+        run: cmake -S . -B _build -DCMAKE_BUILD_TYPE=Debug
+
+      - name: buiild
+        run: cmake --build _build
+
+      - name: run tests
+        run: cd _build && ctest --output-on-failure
+
+      - name: generate coverage
+        run: |
+          lcov --capture --directory _build --output-file coverage.info
+          lcov --remove coverage.info \
+            `/usr/include/*` \
+            `${{github.workspace}}/_build/_deps/*` \
+            `${{github.workspace}}/tests/*` \
+            --output-file coverage.info
+      - name: upload
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          file: coverage.info
+          format: lcov

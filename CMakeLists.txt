@@ -1,8 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 project(banking)
 
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+	add_compile_options(--coverage)
+	add_link_options(--coverage)
+endif()
+
 if(MSVC)
 	set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
 endif()
 
 add_library(account STATIC ${CMAKE_CURRENT_SOURCE_DIR}/banking/Account.cpp)

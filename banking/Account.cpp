@@ -10,11 +10,11 @@ int Account::GetBalance() const { return balance_; }
 
 void Account::ChangeBalance(int diff) {
 	if (!is_locked_) throw std::runtime_error("at first lock the account");
-	is_locked_ = true;
+	balance_ += diff;
 }
 
 void Account::Lock() {
-	if (!is_locked_) throw std::runtime_error("already locked");
+	if (is_locked_) throw std::runtime_error("already locked");
 	is_locked_ = true;
 }
 
